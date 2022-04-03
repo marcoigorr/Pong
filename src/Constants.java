@@ -11,6 +11,8 @@ public class Constants {
     public static final double PADDLE_Y_OFFSET = SCREEN_HEIGHT/2 - (PADDLE_HEIGHT/2);
     public static final double BALL_WIDTH = 10;
     public static final Color PADDLE_COLOR = Color.WHITE;
+    public static final double PADDLE_SPEED = 300;
 
     public static double TOOLBAR_HEIGHT;
+    public static double INSETS_BOTTOM;
 }

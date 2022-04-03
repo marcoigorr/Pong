@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.awt.event.KeyEvent;
 
 public class PlayerController {
@@ -12,13 +11,20 @@ public class PlayerController {
 
     public void update(double dt){
         if (keyListener.isKeyPressed(KeyEvent.VK_DOWN)) {
-            if ((rect.y + 150 * dt) < Constants.SCREEN_HEIGHT - (Constants.PADDLE_HEIGHT + 5)) {
-                this.rect.y += 150 * dt;
-            }
+            moveUp(dt);
         } else if (keyListener.isKeyPressed(KeyEvent.VK_UP)) {
-            if ((rect.y - 150 * dt) > Constants.TOOLBAR_HEIGHT) {
-                this.rect.y += -150 * dt;
-            }
+            moveDown(dt);
+        }
+    }
+
+    public void moveUp(double dt) {
+        if ((rect.y + Constants.PADDLE_SPEED * dt) < (Constants.SCREEN_HEIGHT - Constants.INSETS_BOTTOM) - Constants.PADDLE_HEIGHT) {
+            this.rect.y += Constants.PADDLE_SPEED * dt;
+        }
+    }
+    public void moveDown(double dt) {
+        if ((rect.y - Constants.PADDLE_SPEED * dt) > Constants.TOOLBAR_HEIGHT) {
+            this.rect.y += -Constants.PADDLE_SPEED * dt;
         }
     }
 }

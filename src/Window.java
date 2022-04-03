@@ -1,14 +1,18 @@
 import javax.swing.JFrame;
-import java.awt.*;
+import java.awt.Graphics2D;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.Graphics;
+import java.awt.Image;
 
 public class Window extends JFrame implements Runnable {
 
     public Graphics2D g2;
     public KL keyListener = new KL();
-    public Rect playerOne, ai, ball;
+    public Rect playerOne, ai, ballRect;
     public PlayerController playerController;
+    public Ball ball;
 
     public Window() {
         this.setSize(Constants.SCREEN_WIDTH,Constants.SCREEN_HEIGHT);
@@ -18,6 +22,7 @@ public class Window extends JFrame implements Runnable {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.addKeyListener(keyListener);
         Constants.TOOLBAR_HEIGHT = this.getInsets().top;
+        Constants.INSETS_BOTTOM = this.getInsets().bottom;
 
         g2 = (Graphics2D)this.getGraphics();
 
@@ -38,13 +43,15 @@ public class Window extends JFrame implements Runnable {
                 Constants.PADDLE_COLOR
         );
 
-        ball = new Rect(
+        ballRect = new Rect(
                 Constants.SCREEN_WIDTH/2,
                 Constants.SCREEN_HEIGHT/2,
                 Constants.BALL_WIDTH,
                 Constants.BALL_WIDTH,
                 Constants.PADDLE_COLOR
         );
+
+        ball = new Ball(ballRect, playerOne, ai);
     }
 
     public void update(double dt) {
@@ -56,6 +63,7 @@ public class Window extends JFrame implements Runnable {
         g2.drawImage(dbImage,0,0,this);
 
         playerController.update(dt);
+        ball.update(dt);
 
     }
 
@@ -67,7 +75,7 @@ public class Window extends JFrame implements Runnable {
 
         playerOne.draw(g2);
         ai.draw(g2);
-        ball.draw(g2);
+        ballRect.draw(g2);
     }
 
     public void run() {
