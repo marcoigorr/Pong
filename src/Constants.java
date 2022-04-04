@@ -23,9 +23,10 @@ public class Constants {
     public static final double PADDLE_AI_SPEED = 250;
 
     // Ball
-    public static final double BALL_SPEED_Y = 100;
-    public static final double BALL_SPEED_X = -250;
+    public static final double BALL_SPEED = 250;
     public static final double BALL_WIDTH = 10;
+
+    public static final double MAX_ANGLE = 60;
 
     // Text
     public static final int TEXT_SIZE = 16;
@@ -33,5 +34,8 @@ public class Constants {
     public static final double TEXT_X_OFFSET = (SCREEN_WIDTH * 35) / 100;
     public static final double TEXT_X_OFFSET_RIGHT = SCREEN_WIDTH - ((SCREEN_WIDTH * 35) / 100);
     public static final double TEXT_Y_OFFSET = TOOLBAR_HEIGHT + ((SCREEN_HEIGHT * 10) / 100);
+
+    // Win Condition
+    public static final int WIN_SCORE = 5;
 
 }
