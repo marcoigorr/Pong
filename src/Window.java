@@ -37,9 +37,9 @@ public class Window extends JFrame implements Runnable {
 
         ai = new Rect(
                 Constants.SCREEN_WIDTH - (Constants.PADDLE_X_OFFSET + Constants.PADDLE_WIDTH),
-                Constants.PADDLE_Y_OFFSET,
+                Constants.TOOLBAR_HEIGHT,
                 Constants.PADDLE_WIDTH,
-                Constants.PADDLE_HEIGHT,
+                550,
                 Constants.PADDLE_COLOR
         );
 
