@@ -1,10 +1,10 @@
 import javax.swing.JFrame;
+import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Color;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.Graphics;
-import java.awt.Image;
 
 public class Window extends JFrame implements Runnable {
 
@@ -14,6 +14,7 @@ public class Window extends JFrame implements Runnable {
     public PlayerController playerController;
     public AIController aiController;
     public Ball ball;
+    public Text leftScoreText, rightScoreText;
 
     public Window() {
         this.setSize(Constants.SCREEN_WIDTH,Constants.SCREEN_HEIGHT);
@@ -27,12 +28,15 @@ public class Window extends JFrame implements Runnable {
 
         g2 = (Graphics2D)this.getGraphics();
 
+        leftScoreText = new Text("0", new Font("Helvetica", Font.BOLD, Constants.TEXT_SIZE), Constants.TEXT_X_OFFSET, Constants.TEXT_Y_OFFSET);
+        rightScoreText = new Text("0", new Font("Helvetica", Font.BOLD, Constants.TEXT_SIZE), Constants.TEXT_X_OFFSET_RIGHT, Constants.TEXT_Y_OFFSET);
+
         playerOne = new Rect(
                 Constants.PADDLE_X_OFFSET,
                 Constants.PADDLE_Y_OFFSET,
                 Constants.PADDLE_WIDTH,
                 Constants.PADDLE_HEIGHT,
-                Color.WHITE
+                Constants.PADDLE_COLOR
         );
         playerController = new PlayerController(playerOne, keyListener);
 
@@ -52,9 +56,9 @@ public class Window extends JFrame implements Runnable {
                 Constants.PADDLE_COLOR
         );
 
-        ball = new Ball(ballRect, playerOne, aiRect);
-
+        ball = new Ball(ballRect, playerOne, aiRect, leftScoreText, rightScoreText);
         aiController = new AIController(aiRect, ball);
+
     }
 
     public void update(double dt) {
@@ -72,8 +76,11 @@ public class Window extends JFrame implements Runnable {
 
     public void draw(Graphics g) {
         Graphics2D g2 = (Graphics2D)g;
-        g2.setColor(Color.BLACK);
+        g2.setColor(Constants.SCREEN_BACKGROUND);
         g2.fillRect(0,0, Constants.SCREEN_WIDTH, Constants.SCREEN_HEIGHT);
+
+        leftScoreText.draw(g2);
+        rightScoreText.draw(g2);
 
         playerOne.draw(g2);
         aiRect.draw(g2);

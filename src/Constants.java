@@ -1,10 +1,15 @@
 import java.awt.Color;
 
 public class Constants {
+    // Window Edges
+    public static double TOOLBAR_HEIGHT;
+    public static double INSETS_BOTTOM;
+
     // Screen
     public static final int SCREEN_WIDTH = 800;
     public static final int SCREEN_HEIGHT = 600;
     public static final String SCREEN_TITLE = "Pong";
+    public static final Color SCREEN_BACKGROUND = Color.BLACK;
 
     // Paddle
     public static final double PADDLE_WIDTH = 15;
@@ -22,7 +27,11 @@ public class Constants {
     public static final double BALL_SPEED_X = -250;
     public static final double BALL_WIDTH = 10;
 
-    // Window Edges
-    public static double TOOLBAR_HEIGHT;
-    public static double INSETS_BOTTOM;
+    // Text
+    public static final int TEXT_SIZE = 16;
+    public static final Color TEXT_COLOR = Color.WHITE;
+    public static final double TEXT_X_OFFSET = (SCREEN_WIDTH * 35) / 100;
+    public static final double TEXT_X_OFFSET_RIGHT = SCREEN_WIDTH - ((SCREEN_WIDTH * 35) / 100);
+    public static final double TEXT_Y_OFFSET = TOOLBAR_HEIGHT + ((SCREEN_HEIGHT * 10) / 100);
+
 }
