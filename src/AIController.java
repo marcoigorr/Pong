@@ -1,4 +1,3 @@
-
 public class AIController {
     public Rect rect;
     public Ball ball;

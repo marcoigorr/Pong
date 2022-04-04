@@ -19,7 +19,7 @@ public class Ball {
             if (this.rect.x <= this.leftPaddle.x + leftPaddle.width && this.rect.x >= this.leftPaddle.x &&
                     this.rect.y >= this.leftPaddle.y && this.rect.y <= this.leftPaddle.y + this.leftPaddle.height) {
                 this.vx *= -1;
-                this.vy *= -1;
+                // this.vy *= -1;
             } else if (this.rect.x + this.rect.width < this.leftPaddle.x) {
                 System.out.println("You Lost");
             }
@@ -28,14 +28,14 @@ public class Ball {
                     this.rect.y >= this.rightPaddle.y && this.rect.y <= this.rightPaddle.y + this.rightPaddle.height
                 && this.rect.x <= Constants.SCREEN_WIDTH) {
                 this.vx *= -1;
-                this.vy *= -1;
+                // this.vy *= -1;
             } else if (this.rect.x + this.rect.width > this.rightPaddle.x) {
                 System.out.println("AI Lost");
             }
         }
 
         if (vy > 0) {
-            if (this.rect.y + this.rect.height > Constants.SCREEN_HEIGHT) {
+            if (this.rect.y + this.rect.height > Constants.SCREEN_HEIGHT - Constants.INSETS_BOTTOM) {
                 this.vy *= -1;
             }
         } else if (vy < 0) {
@@ -46,5 +46,18 @@ public class Ball {
 
         this.rect.x += vx * dt;
         this.rect.y += vy * dt;
+    }
+
+    public double getVx() {
+        return vx;
+    }
+    public double getVy() {
+        return vy;
+    }
+    public double getX() {
+        return this.rect.x;
+    }
+    public double getY() {
+        return this.rect.y;
     }
 }
