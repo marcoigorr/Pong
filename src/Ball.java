@@ -23,9 +23,13 @@ public class Ball {
     }
 
     public double calcVelocityAngle(Rect paddle) {
+        // Più la pallina è rimbalzata verso il bordo del paddle, più il valore si avvicina a 1.0 e quindi più l'angolo è inclinato
+        // Differenza tra altezza paddle e pallina
         double relativeIntersectY = (paddle.y + (paddle.height / 2)) - (this.ball.y + (this.ball.height / 2));
+        // Divisione per l'altezza del paddle/2 per ottenere un valore tra 0 e 1.0
         double normalIntersectY = relativeIntersectY / (paddle.height / 2);
-        double theta = normalIntersectY * Constants.MAX_INIT_ANGLE;
+        // Angolo di rimbalzo
+        double theta = Math.abs(normalIntersectY) * Constants.MAX_BOUNCING_ANGLE;
 
         return Math.toRadians(theta);
     }
@@ -35,30 +39,40 @@ public class Ball {
         if (vx < 0) {
             if (this.ball.x <= leftPaddle.x + leftPaddle.width && this.ball.x >= leftPaddle.x &&
                     this.ball.y >= leftPaddle.y && this.ball.y <= leftPaddle.y + leftPaddle.height) {
-                this.vx *= -1;
+                // this.vx *= -1;
                 // Calculate new Angle
-                // double theta = calcVelocityAngle(leftPaddle);
-                // double newVx = Math.abs((Math.cos(theta)) * Constants.BALL_SPEED);
-                // double newVy = (-Math.sin(theta)) * Constants.BALL_SPEED;
+                double theta = calcVelocityAngle(leftPaddle);
+                double newVy = Math.sin(theta) * Constants.BALL_SPEED;
 
-                // double oldSign = Math.signum(vx);
-                // this.vx = newVx * (-1 * oldSign);
-                // this.vy = newVy;
+                this.vx = (Math.signum(vx) * -1) * (Math.cos(theta) * Constants.BALL_SPEED);
+
+                // Se la pallina va verso il basso rimane verso il basso
+                if (this.vy > 0) {
+                    this.vy = Math.abs(newVy);
+                } else if (this.vy < 0) {
+                    this.vy = -(Math.abs(newVy));
+                }
+
             }
 
         // Se la pallina va verso destra
         } else if (vx > 0) {
             if (this.ball.x + this.ball.width >= rightPaddle.x && this.ball.x <= rightPaddle.x + rightPaddle.width &&
                     this.ball.y >= rightPaddle.y && this.ball.y <= rightPaddle.y + rightPaddle.height) {
-                this.vx *= -1;
+                // this.vx *= -1;
                 // Calculate new Angle
-                // double theta = calcVelocityAngle(rightPaddle);
-                // double newVx = Math.abs((Math.cos(theta)) * Constants.BALL_SPEED);
-                // double newVy = (-Math.sin(theta)) * Constants.BALL_SPEED;
+                double theta = calcVelocityAngle(rightPaddle);
+                double newVx = (Math.abs(Math.cos(theta)) * Constants.BALL_SPEED);
+                double newVy = Math.sin(theta) * Constants.BALL_SPEED;
 
-                // double oldSign = Math.signum(vx);
-                // this.vx = newVx * (-1 * oldSign);
-                // this.vy = newVy;
+                this.vx = (Math.signum(vx) * -1) * newVx;
+
+                // La pallina rimane con la stessa traiettoria, cambia solo verso x
+                if (this.vy > 0) {
+                    this.vy = Math.abs(newVy);
+                } else if (this.vy < 0) {
+                    this.vy = -(Math.abs(newVy));
+                }
             }
         }
 

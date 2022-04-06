@@ -8,5 +8,4 @@ public class FpsCounter {
     public void update(double dt) {
         fpsCounterText.text = "" + ((double)Math.round((1 / dt) * 100d) / 100d);
     }
-
 }
