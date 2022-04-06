@@ -16,7 +16,7 @@ public class PlayerController {
             if ((rect.y + Constants.PADDLE_SPEED * dt) < (Constants.SCREEN_HEIGHT - Constants.INSETS_BOTTOM) - Constants.PADDLE_HEIGHT) {
                 // Se premuto shift aumenta velocitá
                 if (keyListener.isKeyPressed(KeyEvent.VK_SHIFT)) {
-                    this.rect.y += (Constants.PADDLE_SPEED + 200) * dt;
+                    this.rect.y += (Constants.PADDLE_SPEED + Constants.PADDLE_SPEED_BOOST) * dt;
                 } else {
                     this.rect.y += (Constants.PADDLE_SPEED) * dt;
                 }
@@ -26,7 +26,7 @@ public class PlayerController {
             if ((rect.y - Constants.PADDLE_SPEED * dt) > Constants.TOOLBAR_HEIGHT) {
                 // Se premuto shift aumenta velocitá
                 if (keyListener.isKeyPressed(KeyEvent.VK_SHIFT)) {
-                    this.rect.y -= (Constants.PADDLE_SPEED + 200) * dt;
+                    this.rect.y -= (Constants.PADDLE_SPEED + Constants.PADDLE_SPEED_BOOST) * dt;
                 } else {
                     this.rect.y -= (Constants.PADDLE_SPEED) * dt;
                 }

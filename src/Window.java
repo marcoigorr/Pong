@@ -1,10 +1,9 @@
 import javax.swing.JFrame;
-import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.Font;
+import java.awt.Color;
 
 public class Window extends JFrame implements Runnable {
 
@@ -14,7 +13,8 @@ public class Window extends JFrame implements Runnable {
     public PlayerController playerController;
     public AIController aiController;
     public Ball ball;
-    public Text leftScoreText, rightScoreText;
+    public Text leftScoreText, rightScoreText, fpsCounterText;
+    public FpsCounter fpsCounter;
 
     public Window() {
         this.setSize(Constants.SCREEN_WIDTH,Constants.SCREEN_HEIGHT);
@@ -28,8 +28,11 @@ public class Window extends JFrame implements Runnable {
 
         g2 = (Graphics2D)this.getGraphics();
 
-        leftScoreText = new Text("0", new Font("Helvetica", Font.BOLD, Constants.TEXT_SIZE), Constants.TEXT_X_OFFSET, Constants.TEXT_Y_OFFSET);
-        rightScoreText = new Text("0", new Font("Helvetica", Font.BOLD, Constants.TEXT_SIZE), Constants.TEXT_X_OFFSET_RIGHT, Constants.TEXT_Y_OFFSET);
+        leftScoreText = new Text("0", new Font("Helvetica", Font.BOLD, Constants.TEXT_SIZE), Color.WHITE, Constants.TEXT_X_OFFSET, Constants.TEXT_Y_OFFSET);
+        rightScoreText = new Text("0", new Font("Helvetica", Font.BOLD, Constants.TEXT_SIZE), Color.WHITE, Constants.TEXT_X_OFFSET_RIGHT, Constants.TEXT_Y_OFFSET);
+
+        fpsCounterText = new Text("0", new Font("Didot", Font.PLAIN, Constants.FPS_SIZE ), Constants.FPS_COLOR, Constants.FPS_OFFSET_X, Constants.FPS_OFFSET_Y);
+        fpsCounter = new FpsCounter(fpsCounterText);
 
         playerOne = new Rect(
                 Constants.PADDLE_X_OFFSET,
@@ -68,6 +71,8 @@ public class Window extends JFrame implements Runnable {
         this.draw(dbg);
         g2.drawImage(dbImage,0,0,this);
 
+        fpsCounter.update(dt);
+
         playerController.update(dt);
         aiController.update(dt);
         ball.update(dt);
@@ -81,6 +86,7 @@ public class Window extends JFrame implements Runnable {
 
         leftScoreText.draw(g2);
         rightScoreText.draw(g2);
+        fpsCounterText.draw(g2);
 
         playerOne.draw(g2);
         aiRect.draw(g2);

@@ -9,18 +9,35 @@ public class AIController {
 
     public void update(double dt) {
         // Se la pallina é in direzione dell'AI
-        if (this.ball.getVx() > 0) {
+        if (ball.getVx() > 0) {
             // Se la pallina sta piú in basso (y maggiore) della barra
-            if (this.ball.getY() > this.rect.y + Constants.PADDLE_HEIGHT/2 &&
-                this.rect.y + Constants.PADDLE_AI_SPEED * dt < (Constants.SCREEN_HEIGHT - Constants.INSETS_BOTTOM) - Constants.PADDLE_HEIGHT) {
+            if (ball.getY() > rect.y + Constants.PADDLE_HEIGHT/2 &&
+                rect.y + Constants.PADDLE_AI_SPEED * dt < (Constants.SCREEN_HEIGHT - Constants.INSETS_BOTTOM) - Constants.PADDLE_HEIGHT) {
 
-                this.rect.y += (Constants.PADDLE_AI_SPEED * dt);
+                // Scatto se c'è molta differenza di altezza tra pallina e paddle
+                if (Math.abs(ball.getY() - (rect.y + Constants.PADDLE_HEIGHT)) >= 100) {
+                    rect.y += ((Constants.PADDLE_AI_SPEED + Constants.PADDLE_SPEED_BOOST) * dt);
+                } else {
+                    rect.y += (Constants.PADDLE_AI_SPEED * dt);
+                }
 
             // Se la pallina sta piú in alto (y minore) della barra
-            } else if (this.ball.getY() < this.rect.y + Constants.PADDLE_HEIGHT/2 &&
-                this.rect.y - Constants.PADDLE_AI_SPEED * dt > Constants.TOOLBAR_HEIGHT) {
+            } else if (ball.getY() < rect.y + Constants.PADDLE_HEIGHT/2 &&
+                rect.y - Constants.PADDLE_AI_SPEED * dt > Constants.TOOLBAR_HEIGHT) {
 
-                this.rect.y -= (Constants.PADDLE_AI_SPEED * dt);
+                // Scatto se c'è molta differenza di altezza tra pallina e paddle
+                if (Math.abs(ball.getY() - (rect.y + Constants.PADDLE_HEIGHT)) >= 100) {
+                    rect.y -= ((Constants.PADDLE_AI_SPEED + Constants.PADDLE_SPEED_BOOST) * dt);
+                } else {
+                    rect.y -= (Constants.PADDLE_AI_SPEED * dt);
+                }
+            }
+        } else if ((int)(rect.y + Constants.PADDLE_HEIGHT/2) != (int)Constants.SCREEN_HEIGHT/2) {
+            // Riposizionati al centro
+            if ((int)(rect.y + Constants.PADDLE_HEIGHT/2) < (int)Constants.SCREEN_HEIGHT/2) {
+                rect.y += Constants.PADDLE_AI_SPEED * dt;
+            } else {
+                rect.y -= Constants.PADDLE_AI_SPEED * dt;
             }
         }
     }
