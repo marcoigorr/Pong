@@ -25,7 +25,6 @@ public class Window extends JFrame implements Runnable {
         this.addKeyListener(keyListener);
         Constants.TOOLBAR_HEIGHT = this.getInsets().top;
         Constants.INSETS_BOTTOM = this.getInsets().bottom;
-
         g2 = (Graphics2D)this.getGraphics();
 
         leftScoreText = new Text("0", new Font("Helvetica", Font.BOLD, Constants.TEXT_SIZE), Constants.TEXT_COLOR, Constants.TEXT_X_OFFSET, Constants.TEXT_Y_OFFSET);
