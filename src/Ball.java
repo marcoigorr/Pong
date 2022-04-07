@@ -7,8 +7,10 @@ public class Ball {
 
     private Random random = new Random();
     private double initAngle = getRandomAngle();
-    private double vx = Constants.BALL_SPEED * Math.cos(initAngle);
+    private double vx = Constants.BALL_SPEED ;
     private double vy = Constants.BALL_SPEED * Math.sin(initAngle);
+    private double bonusSpeed;
+    private boolean restart = false;
 
     public Ball(Rect ball, Rect leftPaddle, Rect rightPaddle, Text leftScoreText, Text rightScoreText) {
         this.ball = ball;
@@ -31,12 +33,16 @@ public class Ball {
         // Angolo di rimbalzo
         double theta = Math.abs(normalIntersectY) * Constants.MAX_BOUNCING_ANGLE;
 
-        // da aumentare velocità
+        bonusSpeed = Math.abs(normalIntersectY) * Constants.MAX_BONUS_SPEED;
 
         return Math.toRadians(theta);
     }
 
     public void update(double dt) {
+        // Avanza
+        this.ball.x += vx * dt;
+        this.ball.y += vy * dt;
+
         // Se la pallina va verso sinistra
         if (vx < 0) {
             if (this.ball.x <= leftPaddle.x + leftPaddle.width && this.ball.x >= leftPaddle.x &&
@@ -44,17 +50,16 @@ public class Ball {
                 // this.vx *= -1;
                 // Calculate new Angle
                 double theta = calcVelocityAngle(leftPaddle);
-                double newVy = Math.sin(theta) * Constants.BALL_SPEED;
+                double newVy = Math.sin(theta) * (Constants.BALL_SPEED + bonusSpeed);
 
-                this.vx = (Math.signum(vx) * -1) * (Math.cos(theta) * Constants.BALL_SPEED);
+                this.vx = (Math.signum(vx) * -1) * (Math.cos(theta) * (Constants.BALL_SPEED + bonusSpeed));
 
-                // Se la pallina va verso il basso rimane verso il basso
+                // Se la pallina va verso il basso, rimane verso il basso
                 if (this.vy > 0) {
                     this.vy = Math.abs(newVy);
                 } else if (this.vy < 0) {
                     this.vy = -(Math.abs(newVy));
                 }
-
             }
 
         // Se la pallina va verso destra
@@ -64,8 +69,8 @@ public class Ball {
                 // this.vx *= -1;
                 // Calculate new Angle
                 double theta = calcVelocityAngle(rightPaddle);
-                double newVx = (Math.abs(Math.cos(theta)) * Constants.BALL_SPEED);
-                double newVy = Math.sin(theta) * Constants.BALL_SPEED;
+                double newVx = (Math.abs(Math.cos(theta)) * (Constants.BALL_SPEED + bonusSpeed));
+                double newVy = Math.sin(theta) * (Constants.BALL_SPEED + bonusSpeed);
 
                 this.vx = (Math.signum(vx) * -1) * newVx;
 
@@ -96,7 +101,11 @@ public class Ball {
             rightScoreText.text = "" + rightScore;
 
             // Repositioning
-            restart();
+            this.ball.x = (Constants.SCREEN_WIDTH/2) - this.ball.width/2;
+            this.ball.y = (Constants.SCREEN_HEIGHT/2) - this.ball.height/2;
+
+            reposition();
+            restart = true;
 
         // La pallina va dietro al paddle di destra, il giocatore ha fatto punto
         } else if (this.ball.x + this.ball.width > rightPaddle.x + rightPaddle.width) {
@@ -104,8 +113,8 @@ public class Ball {
             leftScore++;
             leftScoreText.text = "" + leftScore;
 
-            // Repositioning
-            restart();
+            reposition();
+            restart = true;
         }
 
         // Controlla i punteggi dei giocatori
@@ -120,18 +129,14 @@ public class Ball {
             this.vx = 0;
             this.vy = 0;
         }
-
-        // Avanza
-        this.ball.x += vx * dt;
-        this.ball.y += vy * dt;
     }
 
-    public void restart() {
+    public void reposition() {
         double newAngle = getRandomAngle();
         this.ball.x = (Constants.SCREEN_WIDTH/2) - this.ball.width/2;
         this.ball.y = (Constants.SCREEN_HEIGHT/2) - this.ball.height/2;
-        this.vx = 0;
-        this.vy = 0;
+        leftPaddle.y = Constants.PADDLE_Y_OFFSET;
+
         if (Integer.parseInt(leftScoreText.text) >= 3 || Integer.parseInt(rightScoreText.text) >= 3) {
             this.vx = -(Constants.BALL_SPEED + 100) * Math.cos(newAngle);
             this.vy = -(Constants.BALL_SPEED + 100) * Math.sin(newAngle);

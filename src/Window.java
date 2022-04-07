@@ -13,8 +13,7 @@ public class Window extends JFrame implements Runnable {
     public PlayerController playerController;
     public AIController aiController;
     public Ball ball;
-    public Text leftScoreText, rightScoreText;
-    public Text fpsCounterText, fpsAverageText;
+    public Text leftScoreText, rightScoreText, fpsCounterText, fpsAverageText;
     public FpsCounter fpsCounter;
 
     public Window() {
@@ -29,8 +28,8 @@ public class Window extends JFrame implements Runnable {
 
         g2 = (Graphics2D)this.getGraphics();
 
-        leftScoreText = new Text("0", new Font("Helvetica", Font.BOLD, Constants.TEXT_SIZE), Color.WHITE, Constants.TEXT_X_OFFSET, Constants.TEXT_Y_OFFSET);
-        rightScoreText = new Text("0", new Font("Helvetica", Font.BOLD, Constants.TEXT_SIZE), Color.WHITE, Constants.TEXT_X_OFFSET_RIGHT, Constants.TEXT_Y_OFFSET);
+        leftScoreText = new Text("0", new Font("Helvetica", Font.BOLD, Constants.TEXT_SIZE), Constants.TEXT_COLOR, Constants.TEXT_X_OFFSET, Constants.TEXT_Y_OFFSET);
+        rightScoreText = new Text("0", new Font("Helvetica", Font.BOLD, Constants.TEXT_SIZE), Constants.TEXT_COLOR, Constants.TEXT_X_OFFSET_RIGHT, Constants.TEXT_Y_OFFSET);
 
         fpsCounterText = new Text("0", new Font("Didot", Font.PLAIN, Constants.FPS_SIZE ), Constants.FPS_COLOR, Constants.FPS_OFFSET_X, Constants.FPS_OFFSET_Y);
         fpsCounter = new FpsCounter(fpsCounterText);

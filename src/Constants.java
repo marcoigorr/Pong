@@ -27,10 +27,11 @@ public class Constants {
     // Ball
     public static final double BALL_SPEED = 200;
     public static final double BALL_WIDTH = 10;
+    public static final double MAX_BONUS_SPEED = 140;
 
     // Angles
-    public static final double MAX_BOUNCING_ANGLE = 55;
-    public static final double MAX_INIT_ANGLE = 40;
+    public static final double MAX_BOUNCING_ANGLE = 45;
+    public static final double MAX_INIT_ANGLE = 50;
     public static final double MIN_INIT_ANGLE = 20;
 
     // Text
