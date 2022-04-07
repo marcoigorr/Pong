@@ -13,7 +13,8 @@ public class Window extends JFrame implements Runnable {
     public PlayerController playerController;
     public AIController aiController;
     public Ball ball;
-    public Text leftScoreText, rightScoreText, fpsCounterText;
+    public Text leftScoreText, rightScoreText;
+    public Text fpsCounterText, fpsAverageText;
     public FpsCounter fpsCounter;
 
     public Window() {
@@ -86,6 +87,7 @@ public class Window extends JFrame implements Runnable {
 
         leftScoreText.draw(g2);
         rightScoreText.draw(g2);
+
         fpsCounterText.draw(g2);
 
         playerOne.draw(g2);

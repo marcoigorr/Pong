@@ -25,11 +25,13 @@ public class Ball {
     public double calcVelocityAngle(Rect paddle) {
         // Più la pallina è rimbalzata verso il bordo del paddle, più il valore si avvicina a 1.0 e quindi più l'angolo è inclinato
         // Differenza tra altezza paddle e pallina
-        double relativeIntersectY = (paddle.y + (paddle.height / 2)) - (this.ball.y + (this.ball.height / 2));
+        double relativeIntersectY = (paddle.y + ((paddle.height - 20) / 2)) - (this.ball.y + (this.ball.height / 2));
         // Divisione per l'altezza del paddle/2 per ottenere un valore tra 0 e 1.0
-        double normalIntersectY = relativeIntersectY / (paddle.height / 2);
+        double normalIntersectY = relativeIntersectY / ((paddle.height - 20) / 2);
         // Angolo di rimbalzo
         double theta = Math.abs(normalIntersectY) * Constants.MAX_BOUNCING_ANGLE;
+
+        // da aumentare velocità
 
         return Math.toRadians(theta);
     }

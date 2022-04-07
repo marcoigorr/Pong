@@ -29,7 +29,7 @@ public class Constants {
     public static final double BALL_WIDTH = 10;
 
     // Angles
-    public static final double MAX_BOUNCING_ANGLE = 75;
+    public static final double MAX_BOUNCING_ANGLE = 55;
     public static final double MAX_INIT_ANGLE = 40;
     public static final double MIN_INIT_ANGLE = 20;
 
