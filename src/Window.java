@@ -65,7 +65,7 @@ public class Window extends JFrame implements Runnable {
     }
 
     public void update(double dt) {
-        //System.out.println(1 / dt + " fps");
+        // System.out.println(1 / dt + " fps");
         Image dbImage = createImage(getWidth(), getHeight());
         Graphics dbg = dbImage.getGraphics();
         this.draw(dbg);

@@ -5,10 +5,12 @@ public class Ball {
     public Rect leftPaddle, rightPaddle;
     public Text leftScoreText, rightScoreText;
 
+    private double ballSpeed = Constants.BALL_SPEED;
+
     private Random random = new Random();
     private double initAngle = getRandomAngle();
-    private double vx = Constants.BALL_SPEED ;
-    private double vy = Constants.BALL_SPEED * Math.sin(initAngle);
+    private double vx = ballSpeed;
+    private double vy = ballSpeed * Math.sin(initAngle);
     private double bonusSpeed;
     private boolean restart = false;
 
@@ -27,9 +29,9 @@ public class Ball {
     public double calcVelocityAngle(Rect paddle) {
         // Più la pallina è rimbalzata verso il bordo del paddle, più il valore si avvicina a 1.0 e quindi più l'angolo è inclinato
         // Differenza tra altezza paddle e pallina
-        double relativeIntersectY = (paddle.y + ((paddle.height - 20) / 2)) - (this.ball.y + (this.ball.height / 2));
+        double relativeIntersectY = (paddle.y + ((paddle.height - 10) / 2)) - (this.ball.y + (this.ball.height / 2));
         // Divisione per l'altezza del paddle/2 per ottenere un valore tra 0 e 1.0
-        double normalIntersectY = relativeIntersectY / ((paddle.height - 20) / 2);
+        double normalIntersectY = relativeIntersectY / ((paddle.height - 10) / 2);
         // Angolo di rimbalzo
         double theta = Math.abs(normalIntersectY) * Constants.MAX_BOUNCING_ANGLE;
 
@@ -50,9 +52,9 @@ public class Ball {
                 // this.vx *= -1;
                 // Calculate new Angle
                 double theta = calcVelocityAngle(leftPaddle);
-                double newVy = Math.sin(theta) * (Constants.BALL_SPEED + bonusSpeed);
+                double newVy = Math.sin(theta) * (ballSpeed + bonusSpeed);
 
-                this.vx = (Math.signum(vx) * -1) * (Math.cos(theta) * (Constants.BALL_SPEED + bonusSpeed));
+                this.vx = (Math.signum(vx) * -1) * (Math.cos(theta) * (ballSpeed + bonusSpeed));
 
                 // Se la pallina va verso il basso, rimane verso il basso
                 if (this.vy > 0) {
@@ -69,8 +71,8 @@ public class Ball {
                 // this.vx *= -1;
                 // Calculate new Angle
                 double theta = calcVelocityAngle(rightPaddle);
-                double newVx = (Math.abs(Math.cos(theta)) * (Constants.BALL_SPEED + bonusSpeed));
-                double newVy = Math.sin(theta) * (Constants.BALL_SPEED + bonusSpeed);
+                double newVx = (Math.abs(Math.cos(theta)) * (ballSpeed + bonusSpeed));
+                double newVy = Math.sin(theta) * (ballSpeed + bonusSpeed);
 
                 this.vx = (Math.signum(vx) * -1) * newVx;
 
@@ -138,11 +140,13 @@ public class Ball {
         leftPaddle.y = Constants.PADDLE_Y_OFFSET;
 
         if (Integer.parseInt(leftScoreText.text) >= 3 || Integer.parseInt(rightScoreText.text) >= 3) {
-            this.vx = -(Constants.BALL_SPEED + 100) * Math.cos(newAngle);
-            this.vy = -(Constants.BALL_SPEED + 100) * Math.sin(newAngle);
+            ballSpeed += 100;
+
+            this.vx = -(ballSpeed) * Math.cos(newAngle);
+            this.vy = -(ballSpeed) * Math.sin(newAngle);
         } else {
-            this.vx = -Constants.BALL_SPEED * Math.cos(newAngle);
-            this.vy = -Constants.BALL_SPEED * Math.sin(newAngle);
+            this.vx = -ballSpeed * Math.cos(newAngle);
+            this.vy = -ballSpeed * Math.sin(newAngle);
         }
     }
 
