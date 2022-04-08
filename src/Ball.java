@@ -12,7 +12,6 @@ public class Ball {
     private double vx = ballSpeed;
     private double vy = ballSpeed * Math.sin(initAngle);
     private double bonusSpeed;
-    private boolean restart = false;
 
     public Ball(Rect ball, Rect leftPaddle, Rect rightPaddle, Text leftScoreText, Text rightScoreText) {
         this.ball = ball;
@@ -41,10 +40,6 @@ public class Ball {
     }
 
     public void update(double dt) {
-        // Avanza
-        this.ball.x += vx * dt;
-        this.ball.y += vy * dt;
-
         // Se la pallina va verso sinistra
         if (vx < 0) {
             if (this.ball.x <= leftPaddle.x + leftPaddle.width && this.ball.x >= leftPaddle.x &&
@@ -107,7 +102,6 @@ public class Ball {
             this.ball.y = (Constants.SCREEN_HEIGHT/2) - this.ball.height/2;
 
             reposition();
-            restart = true;
 
         // La pallina va dietro al paddle di destra, il giocatore ha fatto punto
         } else if (this.ball.x + this.ball.width > rightPaddle.x + rightPaddle.width) {
@@ -116,21 +110,21 @@ public class Ball {
             leftScoreText.text = "" + leftScore;
 
             reposition();
-            restart = true;
         }
 
         // Controlla i punteggi dei giocatori
         if (Integer.parseInt(leftScoreText.text) == Constants.WIN_SCORE) {
             // Player Won, STOP
-            System.out.println("Player Won");
-            this.vx = 0;
-            this.vy = 0;
+            Main.changeState(2);
         } else if (Integer.parseInt(rightScoreText.text) == Constants.WIN_SCORE) {
             // AI Won, STOP
-            System.out.println("AI Won");
-            this.vx = 0;
-            this.vy = 0;
+            Main.changeState(2);
         }
+
+        // Avanza
+        this.ball.x += vx * dt;
+        this.ball.y += vy * dt;
+
     }
 
     public void reposition() {
@@ -141,7 +135,6 @@ public class Ball {
 
         if (Integer.parseInt(leftScoreText.text) >= 3 || Integer.parseInt(rightScoreText.text) >= 3) {
             ballSpeed += 100;
-
             this.vx = -(ballSpeed) * Math.cos(newAngle);
             this.vy = -(ballSpeed) * Math.sin(newAngle);
         } else {

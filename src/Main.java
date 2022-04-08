@@ -16,6 +16,18 @@ public class Main {
             window = new Window();
             mainThread = new Thread(window);
             mainThread.start();
+        } else if ( newState == 0 && state == 1) {
+            window.stop();
+            menu = new MainMenu();
+            mainThread = new Thread(window);
+            mainThread.start();
+        } else if (newState == 2) {
+            if (window != null) {
+                window.stop();
+            } else if (menu != null) {
+                menu.stop();
+            }
         }
+        state = newState;
     }
 }

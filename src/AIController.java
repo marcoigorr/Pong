@@ -15,7 +15,7 @@ public class AIController {
                 rect.y + Constants.PADDLE_AI_SPEED * dt < (Constants.SCREEN_HEIGHT - Constants.INSETS_BOTTOM) - Constants.PADDLE_HEIGHT) {
 
                 // Scatto se c'è molta differenza di altezza tra pallina e paddle
-                if (Math.abs(ball.getY() - (rect.y)) >= 100) {
+                if (Math.abs(ball.getY() - (rect.y)) >= 50) {
                     rect.y += ((Constants.PADDLE_AI_SPEED + Constants.PADDLE_SPEED_BOOST) * dt);
                 } else {
                     rect.y += (Constants.PADDLE_AI_SPEED * dt);
@@ -26,7 +26,7 @@ public class AIController {
                 rect.y - Constants.PADDLE_AI_SPEED * dt > Constants.TOOLBAR_HEIGHT) {
 
                 // Scatto se c'è molta differenza di altezza tra pallina e paddle
-                if (Math.abs(ball.getY() - (rect.y + Constants.PADDLE_HEIGHT)) >= 100) {
+                if (Math.abs(ball.getY() - (rect.y + Constants.PADDLE_HEIGHT)) >= 50) {
                     rect.y -= ((Constants.PADDLE_AI_SPEED + Constants.PADDLE_SPEED_BOOST) * dt);
                 } else {
                     rect.y -= (Constants.PADDLE_AI_SPEED * dt);

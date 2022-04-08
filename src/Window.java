@@ -1,9 +1,5 @@
 import javax.swing.JFrame;
-import java.awt.Graphics2D;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Font;
-import java.awt.Color;
+import java.awt.*;
 
 public class Window extends JFrame implements Runnable {
 
@@ -15,6 +11,7 @@ public class Window extends JFrame implements Runnable {
     public Ball ball;
     public Text leftScoreText, rightScoreText, fpsCounterText, fpsAverageText;
     public FpsCounter fpsCounter;
+    public boolean isRunning = true;
 
     public Window() {
         this.setSize(Constants.SCREEN_WIDTH,Constants.SCREEN_HEIGHT);
@@ -26,6 +23,9 @@ public class Window extends JFrame implements Runnable {
         Constants.TOOLBAR_HEIGHT = this.getInsets().top;
         Constants.INSETS_BOTTOM = this.getInsets().bottom;
         g2 = (Graphics2D)this.getGraphics();
+        // better pixel rendering
+        g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
+                RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HRGB);
 
         leftScoreText = new Text("0", new Font("Helvetica", Font.BOLD, Constants.TEXT_SIZE), Constants.TEXT_COLOR, Constants.TEXT_X_OFFSET, Constants.TEXT_Y_OFFSET);
         rightScoreText = new Text("0", new Font("Helvetica", Font.BOLD, Constants.TEXT_SIZE), Constants.TEXT_COLOR, Constants.TEXT_X_OFFSET_RIGHT, Constants.TEXT_Y_OFFSET);
@@ -93,14 +93,21 @@ public class Window extends JFrame implements Runnable {
         ballRect.draw(g2);
     }
 
+    public void stop() {
+        isRunning = false;
+    }
+
     public void run() {
         double lastFrameTime = 0.0;
-        while (true) {
+        while (isRunning) {
             double time = Time.getTime();
             double deltaTime = time - lastFrameTime;
             lastFrameTime = time;
 
             update(deltaTime);
         }
+        this.dispose();
+        return;
     }
+
 }
