@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="60408c11-ff85-44f0-81bc-821236946f0b" name="Changes" comment="+ general corrections" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/PlayerController.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Constants.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/FpsCounter.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Text.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Window.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/AIController.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Ball.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="27MxuHW0YCBmHKmrpXYhUBlQ0RP" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Java" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Pong" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="60408c11-ff85-44f0-81bc-821236946f0b" name="Changes" comment="" />
+      <created>1649143980114</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1649143980114</updated>
+    </task>
+    <task id="LOCAL-00001" summary="+ fps counter&#10;&#10;+ many corrections to Player and AI Controller&#10;+ generic corrections">
+      <created>1649283415159</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1649283415159</updated>
+    </task>
+    <task id="LOCAL-00002" summary="+ fps better &#10;&#10;- corrected bouncing angle">
+      <created>1649330879917</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1649330879917</updated>
+    </task>
+    <task id="LOCAL-00003" summary="+ general corrections">
+      <created>1649359459432</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1649359459432</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="+ fps counter&#10;&#10;+ many corrections to Player and AI Controller&#10;+ generic corrections" />
+    <MESSAGE value="+ fps better &#10;&#10;- corrected bouncing angle" />
+    <MESSAGE value="+ general corrections" />
+    <option name="LAST_COMMIT_MESSAGE" value="+ general corrections" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Pong$Main.ic" NAME="Main Coverage Results" MODIFIED="1649146518477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>
