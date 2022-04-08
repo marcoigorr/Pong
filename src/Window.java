@@ -1,5 +1,10 @@
 import javax.swing.JFrame;
-import java.awt.*;
+import java.awt.Graphics2D;
+import java.awt.Graphics;
+import java.awt.RenderingHints;
+import java.awt.Image;
+import java.awt.Font;
+import java.awt.Color;
 
 public class Window extends JFrame implements Runnable {
 
@@ -27,7 +32,7 @@ public class Window extends JFrame implements Runnable {
         g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
                 RenderingHints.VALUE_TEXT_ANTIALIAS_LCD_HRGB);
 
-        leftScoreText = new Text("0", new Font("Helvetica", Font.BOLD, Constants.TEXT_SIZE), Constants.TEXT_COLOR, Constants.TEXT_X_OFFSET, Constants.TEXT_Y_OFFSET);
+        leftScoreText = new Text("-1", new Font("Helvetica", Font.BOLD, Constants.TEXT_SIZE), Constants.TEXT_COLOR, Constants.TEXT_X_OFFSET, Constants.TEXT_Y_OFFSET);
         rightScoreText = new Text("0", new Font("Helvetica", Font.BOLD, Constants.TEXT_SIZE), Constants.TEXT_COLOR, Constants.TEXT_X_OFFSET_RIGHT, Constants.TEXT_Y_OFFSET);
 
         fpsCounterText = new Text("0", new Font("Didot", Font.PLAIN, Constants.FPS_SIZE ), Constants.FPS_COLOR, Constants.FPS_OFFSET_X, Constants.FPS_OFFSET_Y);

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Pong" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="60408c11-ff85-44f0-81bc-821236946f0b" name="Changes" comment="del">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="60408c11-ff85-44f0-81bc-821236946f0b" name="Changes" comment="+ interactive menu">
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Pong_jar.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ball.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,14 +36,14 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/PlayerController.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Constants.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/FpsCounter.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/Text.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/Window.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/AIController.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/MainMenu.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/Ball.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Text.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/AIController.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/Window.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/PlayerController.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/MainMenu.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -56,7 +57,10 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Java" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -109,7 +113,14 @@
       <option name="project" value="LOCAL" />
       <updated>1649412350124</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="+ interactive menu">
+      <created>1649416325033</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1649416325033</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -128,7 +139,8 @@
     <MESSAGE value="+ fps better &#10;&#10;- corrected bouncing angle" />
     <MESSAGE value="+ general corrections" />
     <MESSAGE value="del" />
-    <option name="LAST_COMMIT_MESSAGE" value="del" />
+    <MESSAGE value="+ interactive menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="+ interactive menu" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Pong$Main.ic" NAME="Main Coverage Results" MODIFIED="1649146518477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
